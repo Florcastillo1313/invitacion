@@ -124,9 +124,29 @@ font-size:18px;
 }
 
 </style>
+<div id="pantallaInicio">
+  <div class="sobre" onclick="abrirInvitacion()">
+    💌
+    <p>Abrir invitación</p>
+  </div>
+</div>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
 </head>
 
-<body>
+<body> 
+<div id="pantallaInicio">
+ <div class="sobre" onclick="abrirInvitacion()">
+    💌
+<p>Abrir invitación</p>
+</div>
+</div>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
 <div class="cielo"></div>
 
@@ -166,6 +186,10 @@ Confirmar asistencia 💌
 </div>
 
 <script>
+  function abrirInvitacion(){
+  document.getElementById("pantallaInicio").style.display = "none";
+  document.getElementById("musica").play();
+}
 
 /* estrellas */
 

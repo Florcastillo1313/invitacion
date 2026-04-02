@@ -4,9 +4,108 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación 15 - Isabela</title>
+<script>
 
+function crearEstrella(){
+
+const estrella = document.createElement("div");
+estrella.classList.add("estrella");
+estrella.innerHTML="✨";
+
+estrella.style.left = Math.random()*100+"vw";
+estrella.style.animationDuration = (Math.random()*3+2)+"s";
+
+document.querySelector(".cielo").appendChild(estrella);
+
+setTimeout(()=>{
+estrella.remove();
+},5000);
+
+}
+
+setInterval(crearEstrella,300);
+
+</script>
 <style>
-body {
+body{
+margin:0;
+padding:0;
+text-align:center;
+font-family:Arial;
+background:linear-gradient(#0f1c3f,#1c2f6b);
+color:white;
+overflow:hidden;
+}
+
+/* corona */
+
+.corona{
+font-size:80px;
+margin-top:40px;
+animation: flotar 3s ease-in-out infinite, brillo 2s infinite;
+filter: drop-shadow(0 0 10px silver);
+}
+
+@keyframes flotar{
+0%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0)}
+}
+
+@keyframes brillo{
+0%{filter: drop-shadow(0 0 5px #cfd8ff);}
+50%{filter: drop-shadow(0 0 25px #ffffff);}
+100%{filter: drop-shadow(0 0 5px #cfd8ff);}
+}
+
+/* titulo */
+
+.titulo{
+font-size:50px;
+margin-top:10px;
+}
+
+.nombre{
+font-size:40px;
+color:#dbe4ff;
+letter-spacing:3px;
+}
+
+/* estrellas */
+
+.cielo{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.estrella{
+position:absolute;
+color:white;
+font-size:18px;
+animation: caer linear forwards;
+}
+
+@keyframes caer{
+0%{
+transform:translateY(-10px);
+opacity:1;
+}
+100%{
+transform:translateY(100vh);
+opacity:0;
+}
+}
+  body {
+<div class="cielo"></div>
+
+<div class="corona">👑</div>
+
+<h1 class="titulo">Mis 15</h1>
+<h2 class="nombre">Isabella</h2>
   margin: 0;
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to bottom, #0a1f44, #1e3c72);

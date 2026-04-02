@@ -4,46 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitación 15 - Isabela</title>
-<script>
 
-function crearEstrella(){
-
-const estrella = document.createElement("div");
-estrella.classList.add("estrella");
-estrella.innerHTML="✨";
-
-estrella.style.left = Math.random()*100+"vw";
-estrella.style.animationDuration = (Math.random()*3+2)+"s";
-
-document.querySelector(".cielo").appendChild(estrella);
-
-setTimeout(()=>{
-estrella.remove();
-},5000);
-
-}
-
-setInterval(crearEstrella,300);
-
-</script>
 <style>
 body{
 margin:0;
-padding:0;
-text-align:center;
-font-family:Arial;
+font-family:Arial, sans-serif;
 background:linear-gradient(#0f1c3f,#1c2f6b);
 color:white;
-overflow:hidden;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* cielo */
+.cielo{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.estrella{
+position:absolute;
+font-size:18px;
+animation: caer linear forwards;
+}
+
+@keyframes caer{
+0%{transform:translateY(-10px);opacity:1;}
+100%{transform:translateY(100vh);opacity:0;}
 }
 
 /* corona */
-
 .corona{
 font-size:80px;
 margin-top:40px;
 animation: flotar 3s ease-in-out infinite, brillo 2s infinite;
-filter: drop-shadow(0 0 10px silver);
 }
 
 @keyframes flotar{
@@ -58,111 +55,50 @@ filter: drop-shadow(0 0 10px silver);
 100%{filter: drop-shadow(0 0 5px #cfd8ff);}
 }
 
-/* titulo */
-
-.titulo{
-font-size:50px;
-margin-top:10px;
+/* secciones */
+.section{
+padding:60px 20px;
 }
 
-.nombre{
-font-size:40px;
-color:#dbe4ff;
-letter-spacing:3px;
-}
-
-/* estrellas */
-
-.cielo{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-
-.estrella{
-position:absolute;
-color:white;
-font-size:18px;
-animation: caer linear forwards;
-}
-
-@keyframes caer{
-0%{
-transform:translateY(-10px);
-opacity:1;
-}
-100%{
-transform:translateY(100vh);
+.fade{
 opacity:0;
-}
-}
-  body {
-<div class="cielo"></div>
-
-<div class="corona">👑</div>
-
-<h1 class="titulo">Mis 15</h1>
-<h2 class="nombre">Isabella</h2>
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #0a1f44, #1e3c72);
-  color: white;
-  text-align: center;
+transform:translateY(30px);
+transition:1s;
 }
 
-.section {
-  padding: 60px 20px;
+.fade.visible{
+opacity:1;
+transform:translateY(0);
 }
 
-h1 {
-  font-size: 3em;
+.btn{
+background:white;
+color:#0a1f44;
+padding:15px 25px;
+border-radius:30px;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
 }
 
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 1s;
-}
-
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.btn {
-  background: #ffffff;
-  color: #0a1f44;
-  padding: 15px 25px;
-  border-radius: 30px;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 20px;
-}
-
-img {
-  width: 80%;
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
-.roses {
-  font-size: 2em;
+img{
+width:80%;
+border-radius:20px;
+margin-top:20px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="section">
-  <h2>? Estás invitado ?</h2>
-</div>
+<div class="cielo"></div>
 
-<div class="section fade">
-  <h1>Isabela</h1>
-  <p class="roses">??????</p>
+<div class="corona">👑</div>
+<h1>Mis 15</h1>
+<h2>Isabela</h2>
+
+<div class="section">
+  <h2>✨ Estás invitado ✨</h2>
 </div>
 
 <div class="section fade">
@@ -171,25 +107,41 @@ img {
 </div>
 
 <div class="section fade">
-  <h2>?? 16 Mayo 2026</h2>
-  <h3>?? Domingo Sabio 118</h3>
+  <h2>📅 16 Mayo 2026</h2>
+  <h3>📍 Domingo Sabio 118</h3>
 </div>
 
 <div class="section fade">
-  <img src="foto1.jpg">
+  <img src="foto1.jpg" alt="Foto 1">
 </div>
 
 <div class="section fade">
-  <img src="foto2.jpg">
+  <img src="foto2.jpg" alt="Foto 2">
 </div>
 
 <div class="section fade">
   <a class="btn" href="https://wa.me/549XXXXXXXXXX" target="_blank">
-    Confirmar asistencia ??
+    Confirmar asistencia 💌
   </a>
 </div>
 
 <script>
+// estrellas
+function crearEstrella(){
+  const estrella = document.createElement("div");
+  estrella.classList.add("estrella");
+  estrella.innerHTML="✨";
+
+  estrella.style.left = Math.random()*100+"vw";
+  estrella.style.animationDuration = (Math.random()*3+2)+"s";
+
+  document.querySelector(".cielo").appendChild(estrella);
+
+  setTimeout(()=>estrella.remove(),5000);
+}
+
+setInterval(crearEstrella,300);
+
 // contador
 const fechaEvento = new Date("May 16, 2026 00:00:00").getTime();
 
@@ -197,13 +149,14 @@ setInterval(() => {
   const ahora = new Date().getTime();
   const distancia = fechaEvento - ahora;
 
-  const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const dias = Math.floor(distancia / (1000*60*60*24));
+  const horas = Math.floor((distancia % (1000*60*60*24)) / (1000*60*60));
 
-  document.getElementById("contador").innerHTML = dias + " días " + horas + " hs";
+  document.getElementById("contador").innerHTML =
+    dias + " días " + horas + " hs";
 }, 1000);
 
-// animaciones
+// animación scroll
 const elementos = document.querySelectorAll(".fade");
 
 window.addEventListener("scroll", () => {

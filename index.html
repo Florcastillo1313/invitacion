@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación 15 - Isabela</title>
+
+<title>Mis 15 - Isabella</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
 <style>
+
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:linear-gradient(#0f1c3f,#1c2f6b);
+font-family:'Montserrat',sans-serif;
+background:linear-gradient(#0a1435,#1d2f6f);
 color:white;
 text-align:center;
 overflow-x:hidden;
@@ -23,11 +27,12 @@ left:0;
 width:100%;
 height:100%;
 pointer-events:none;
+z-index:0;
 }
 
 .estrella{
 position:absolute;
-font-size:18px;
+font-size:20px;
 animation: caer linear forwards;
 }
 
@@ -36,9 +41,15 @@ animation: caer linear forwards;
 100%{transform:translateY(100vh);opacity:0;}
 }
 
+/* contenido */
+.contenido{
+position:relative;
+z-index:1;
+}
+
 /* corona */
 .corona{
-font-size:80px;
+font-size:85px;
 margin-top:40px;
 animation: flotar 3s ease-in-out infinite, brillo 2s infinite;
 }
@@ -55,14 +66,27 @@ animation: flotar 3s ease-in-out infinite, brillo 2s infinite;
 100%{filter: drop-shadow(0 0 5px #cfd8ff);}
 }
 
+h1{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+margin:10px;
+color:#e5ecff;
+}
+
+h2{
+font-weight:300;
+letter-spacing:3px;
+}
+
 /* secciones */
+
 .section{
 padding:60px 20px;
 }
 
 .fade{
 opacity:0;
-transform:translateY(30px);
+transform:translateY(40px);
 transition:1s;
 }
 
@@ -71,21 +95,34 @@ opacity:1;
 transform:translateY(0);
 }
 
+.count{
+font-size:40px;
+margin-top:10px;
+}
+
+/* galeria */
+
+img{
+width:80%;
+max-width:400px;
+border-radius:20px;
+margin:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.3);
+}
+
+/* boton */
+
 .btn{
 background:white;
 color:#0a1f44;
-padding:15px 25px;
+padding:15px 30px;
 border-radius:30px;
 text-decoration:none;
 display:inline-block;
 margin-top:20px;
+font-size:18px;
 }
 
-img{
-width:80%;
-border-radius:20px;
-margin-top:20px;
-}
 </style>
 </head>
 
@@ -93,80 +130,98 @@ margin-top:20px;
 
 <div class="cielo"></div>
 
+<div class="contenido">
+
 <div class="corona">👑</div>
-<h1>Mis 15</h1>
-<h2>Isabela</h2>
+
+<h1>Isabella</h1>
+<h2>Mis 15 años</h2>
 
 <div class="section">
-  <h2>✨ Estás invitado ✨</h2>
+<h2>✨ Estás invitado a una noche mágica ✨</h2>
 </div>
 
 <div class="section fade">
-  <h2>Faltan:</h2>
-  <h1 id="contador"></h1>
+<h2>Cuenta regresiva</h2>
+<div id="contador" class="count"></div>
 </div>
 
 <div class="section fade">
-  <h2>📅 16 Mayo 2026</h2>
-  <h3>📍 Domingo Sabio 118</h3>
+<h2>📅 16 de Mayo 2026</h2>
+<h3>⏰ 21:00 hs</h3>
+<h3>📍 Belgrano 1581</h3>
 </div>
 
 <div class="section fade">
-  <img src="foto1.jpg" alt="Foto 1">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
 </div>
 
 <div class="section fade">
-  <img src="foto2.jpg" alt="Foto 2">
+<a class="btn" href="https://wa.me/542920214841" target="_blank">
+Confirmar asistencia 💌
+</a>
 </div>
 
-<div class="section fade">
-  <a class="btn" href="https://wa.me/542920214841" target="_blank">
-    Confirmar asistencia 💌
-  </a>
 </div>
 
 <script>
-// estrellas
+
+/* estrellas */
+
 function crearEstrella(){
-  const estrella = document.createElement("div");
-  estrella.classList.add("estrella");
-  estrella.innerHTML="✨";
 
-  estrella.style.left = Math.random()*100+"vw";
-  estrella.style.animationDuration = (Math.random()*3+2)+"s";
+const estrella=document.createElement("div");
+estrella.classList.add("estrella");
+estrella.innerHTML="✨";
 
-  document.querySelector(".cielo").appendChild(estrella);
+estrella.style.left=Math.random()*100+"vw";
+estrella.style.animationDuration=(Math.random()*3+2)+"s";
 
-  setTimeout(()=>estrella.remove(),5000);
+document.querySelector(".cielo").appendChild(estrella);
+
+setTimeout(()=>estrella.remove(),5000);
+
 }
 
 setInterval(crearEstrella,300);
 
-// contador
-const fechaEvento = new Date("May 16, 2026 21:00:00").getTime();
+/* contador */
 
-setInterval(() => {
-  const ahora = new Date().getTime();
-  const distancia = fechaEvento - ahora;
+const fechaEvento=new Date("May 16, 2026 21:00:00").getTime();
 
-  const dias = Math.floor(distancia / (1000*60*60*24));
-  const horas = Math.floor((distancia % (1000*60*60*24)) / (1000*60*60));
+setInterval(()=>{
 
-  document.getElementById("contador").innerHTML =
-    dias + " días " + horas + " hs";
-}, 1000);
+const ahora=new Date().getTime();
+const distancia=fechaEvento-ahora;
 
-// animación scroll
-const elementos = document.querySelectorAll(".fade");
+const dias=Math.floor(distancia/(1000*60*60*24));
+const horas=Math.floor((distancia%(1000*60*60*24))/(1000*60*60));
+const minutos=Math.floor((distancia%(1000*60*60))/(1000*60));
 
-window.addEventListener("scroll", () => {
-  elementos.forEach(el => {
-    const pos = el.getBoundingClientRect().top;
-    if (pos < window.innerHeight - 100) {
-      el.classList.add("visible");
-    }
-  });
+document.getElementById("contador").innerHTML=
+dias+" días "+horas+" hs "+minutos+" min";
+
+},1000);
+
+/* animación scroll */
+
+const elementos=document.querySelectorAll(".fade");
+
+window.addEventListener("scroll",()=>{
+
+elementos.forEach(el=>{
+
+const pos=el.getBoundingClientRect().top;
+
+if(pos<window.innerHeight-100){
+el.classList.add("visible");
+}
+
 });
+
+});
+
 </script>
 
 </body>
